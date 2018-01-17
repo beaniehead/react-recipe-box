@@ -89,8 +89,8 @@ class App extends React.Component {
         <header className="App-header">
           <h1 className="App-title">Recipe <img src={logo} className="App-logo" alt="logo" /> Box</h1>
         </header>
-        <div className="row">
-          <div className="recipes col col-lg-6 col-md-9" id="index" role="tablist">
+        
+          <div className="recipes " id="index" role="tablist">
             {Object
               .keys(this.state.recipes)
               .map(recipe =>
@@ -105,7 +105,7 @@ class App extends React.Component {
                   />)
             }
           </div>
-        </div>
+        
         <Button color="info" onClick={this.toggle} >Create Recipe</Button>
         <RecipeForm
           editID={this.state.editID}

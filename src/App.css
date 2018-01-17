@@ -9,12 +9,13 @@
 
 .App-header {
   background-color: #2E7A8C;
-  height: 100px;
-  padding: 20px;
+  height: auto;
+  padding: 5px;
   color: white;
   display:flex;
   align-items: center;
   justify-content: center;
+  width:100%;
 }
 
 .App-title {
