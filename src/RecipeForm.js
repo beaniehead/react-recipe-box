@@ -31,17 +31,21 @@ class RecipeForm extends React.Component {
   render() {
     const { editID } = this.props;
     const recipe = this.props.recipes[editID];
+
+    const emoji = [["🍇", "Grapes"], ["🍈", "Melon"], ["🍉", "Watermelon"], ["🍊", "Tangerine"], ["🍋", "Lemon"], ["🍌", "Banana"], ["🍍", "Pineapple"], ["🍎", "Red Apple"], ["🍏", "Green Apple"], ["🍐", "Pear"], ["🍑", "Peach"], ["🍒", "Cherries"], ["🍓", "Strawberry"], ["🥝", "Kiwi Fruit"], ["🍅", "Tomato"], ["🥥", "Coconut"], ["🥑", "Avocado"], ["🍆", "Aubergine"], ["🥔", "Potato"], ["🥕", "Carrot"], ["🌽", "Ear of Corn"], ["🌶", "Hot Pepper"], ["🥒", "Cucumber"], ["🥦", "Broccoli"], ["🍄", "Mushroom"], ["🥜", "Peanuts"], ["🌰", "Chestnut"], ["🍞", "Bread"], ["🥖", "Baguette"], ["🧀", "Cheese"], ["🍖", "Meat"], ["🍗", "Poultry Leg"], ["🥩", "Cut of Meat"], ["🥓", "Bacon"], ["🥫", "Canned Food"], ["🍤", "Shrimp"], ["🍫", "Chocolate Bar"], ["🍬", "Candy"], ["🍯", "Honey"], ["🥛", "Glass of Milk"]];
+    const Random = Math.floor(Math.random() * emoji.length);
+    const randoEmoji = `${emoji[Random][0]} - ${emoji[Random][1]}`;
     return (
       <div>
         <Modal
-        backdrop="static"
+          backdrop="static"
           isOpen={this.props.modal}
           toggle={this.props.toggle} className="recipeFormModal">
           <ModalHeader>
             <div>{recipe ? "Edit Recipe" : "New Recipe"}</div>
 
           </ModalHeader>
-          <div class="recipeAlert alert alert-warning fade " role="alert">Please complete all recipe fields.</div>
+          <div className="recipeAlert alert alert-warning fade " role="alert">Please complete all recipe fields.</div>
           <form className="recipeForm" ref={(input) => this.recipeForm = input} onSubmit={(e) => this.createRecipe(e)}>
             <ModalBody>
               <input
@@ -51,7 +55,7 @@ class RecipeForm extends React.Component {
                 defaultValue={(recipe) ? recipe.name : ""}
               />
               <textarea
-                ref={(input) => this.ingredients = input} placeholder="Ingredients - separated by commas"
+                ref={(input) => this.ingredients = input} placeholder={`Ingredients - separated by commas (e.g.${randoEmoji})`}
                 defaultValue={(recipe) ? recipe.ingredients : ""}
               />
             </ModalBody>
